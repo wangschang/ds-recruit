@@ -1,8 +1,7 @@
 <?php
-
-
 use PHPUnit\Framework\TestCase;
 use Src\MyGreeter;
+
 
 class MyGreeterTest extends TestCase
 {
@@ -88,9 +87,9 @@ class MyGreeterTest extends TestCase
         
         $hour = date('G'); 
         // 根据时间范围返回相应的问候语
-        if ($hour >= 6 && $hour < 12) {
+        if ($hour >= 6 && $hour < 12){
             $greet = "Good morning";
-        } elseif ($hour >= 12 && $hour < 18) {
+        } elseif ($hour >= 12 && $hour < 18){
             $greet = "Good afternoon";
         } else {
             $greet = "Good evening";
@@ -101,7 +100,7 @@ class MyGreeterTest extends TestCase
         );
     }
     /**
-     * 新增加的测试 判断中间状态是否正确
+     * 新增加的测试 判断时间戳中间状态是否正确
      *
      * @return void
      */
@@ -122,14 +121,14 @@ class MyGreeterTest extends TestCase
     public function test_random(){
         
         $timstamp_start = strtotime("2024-09-26 00:00:00");
-        $timstamp_end = strtotime("2024-09-26 23:59:59");
-        $timstamp = rand($timstamp_start,$timstamp_end);
+        $timstamp_end   = strtotime("2024-09-26 23:59:59");
+        $timstamp       = rand($timstamp_start,$timstamp_end);//随机生成时间
         $this->greeter->settimestamp($timstamp);
         $hour = date('G',$timstamp); 
         // 根据时间范围返回相应的问候语
-        if ($hour >= 6 && $hour < 12) {
+        if ($hour >= 6 && $hour < 12){
             $greet = "Good morning";
-        } elseif ($hour >= 12 && $hour < 18) {
+        } elseif ($hour >= 12 && $hour < 18){
             $greet = "Good afternoon";
         } else {
             $greet = "Good evening";

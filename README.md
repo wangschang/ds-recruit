@@ -46,17 +46,17 @@ Hello future teammate!
      所以在dockerfile文件中增加 `RUN apk add --no-cache make` 解决不能正确执行的问题
   - b. Makefile中的 `tests: composer-update` 增加判断防止方法不存在异常
 
-  - c.进一步可以优化的地方，可以把php环境下的 composer安装、make、默认时区等放到 安装放到 Dockerfile中,这样更清晰 docker配置是独立的
+  - c.进一步可以优化的地方，可以把php环境下的 composer安装、make、默认时区配置等安装放到 Dockerfile中,这样减少耦合。docker配置和运行相对独立
 
 **思考部分问题及改进**
 
-MyGreeterTest 是存在问题的，发现的问题及改进的地方
+MyGreeterTest 是存在问题的，发现的问题及改进的地方如下（下面改动都在 MyGreeterTest.php 文件中）
 
-1. 需要覆盖不同时区的测试 见 初始化和测试用例
+1. 测试用例需要覆盖不同时区，保证在不同的时区下能正常返回期望的结果,新增方法见 初始化和测试用例（可以切换不同的时区来进行测试验证）
   
-2. 需要覆盖三个不同时间类型的测试 见测试用例 `test_morning` `test_afternoon` `test_evening`
+2. 需要覆盖三个不同时间类型的测试，预期返回不同的三个回复，见测试用例 `test_morning` `test_afternoon` `test_evening`
   
-3. 临界点的测试 6 12 18点的测试
+3. 临界点时间的测试 6 12 18点的测试保证正确 
   
 4. 覆盖更多时间增加随机时间测试 `test_random`
   

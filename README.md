@@ -36,7 +36,50 @@ Hello future teammate!
 当你全部完成后，请将"动手"和"思考"的结果打包提交给HR。
 注意：请不要在这个代码仓库里直接提交PR！
 
-----------------------------------The follow is notes about code ---------------------------------------
+动手部分问题及改进
+----
+
+1. `make dev-tests` 相关的问题
+  - a. 搭建环境后遇到不能正常执行的问题，输入结果如下
+      `docker-compose exec recruit make tests OCI runtime exec failed: exec failed: unable to start container process: exec: "make": executable file not found in $PATH: unknown make: *** [Makefile:42: dev-tests] Error 126` 
+      提示是环境中没有make的方法
+      所以在dockerfile文件中增加 `RUN apk add --no-cache make` 解决不能正确执行的问题
+  - b. Makefile中的 `tests: composer-update` 增加判断防止方法不存在异常
+
+思考部分问题及改进
+----
+MyGreeterTest 是存在问题的，发现的问题及改进的地方
+
+1. 需要覆盖不同时区的测试 见 初始化和测试用例
+
+2. 需要覆盖三个不同时间类型的测试 见测试用例 `test_morning` `test_afternoon` `test_evening`
+
+3. 临界点的测试 6 12 18点的测试 
+
+4. 覆盖更多时间增加随机时间测试 `test_random`
 
 
+测试结果
+`
+Runtime:       PHP 8.3.11
+Configuration: /srv/phpunit.xml
+
+........                                                            8 / 8 (100%)
+
+Time: 00:00.008, Memory: 8.00 MB
+
+My Greeter
+ ✔ Init
+ ✔ Greeting
+ ✔ Morning
+ ✔ Afternoon
+ ✔ Evening
+ ✔ Default
+ ✔ Timestamp
+ ✔ Random
+
+OK (8 tests, 8 assertions)
+`
+        
+   
 

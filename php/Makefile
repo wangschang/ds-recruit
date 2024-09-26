@@ -9,9 +9,10 @@ $(composer):
 
 composer-update: $(composer)
 	php composer.phar update
-
+#容错优化防止 phpunit 不存在报错  by shuchang 20240926
 tests: composer-update
-	./vendor/bin/phpunit --testdox tests
+#./vendor/bin/phpunit --testdox tests 
+	if [ -f ./vendor/bin/phpunit ]; then ./vendor/bin/phpunit --testdox tests; else echo "PHPUnit not install succ,pls run 'composer update' "; fi
 
 
 # 容器开发环境

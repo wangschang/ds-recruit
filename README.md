@@ -35,18 +35,18 @@ Hello future teammate!
 
 ----------------------------------------------分割线----------------------------------------------------
 
-动手部分问题及改进
+**动手部分问题及改进**
 
-1. **`make dev-tests` 相关的问题**
+1. `make dev-tests` 相关的问题
   - a. 搭建环境后遇到不能正常执行的问题，输入结果如下
      `docker-compose exec recruit make tests OCI runtime exec failed: exec failed: unable to start container process: exec: "make": executable file not found in $PATH: unknown make: *** [Makefile:42: dev-tests] Error 126` 
     提示是环境中没有make的方法
      所以在dockerfile文件中增加 `RUN apk add --no-cache make` 解决不能正确执行的问题
   - b. Makefile中的 `tests: composer-update` 增加判断防止方法不存在异常
 
-思考部分问题及改进
+**思考部分问题及改进**
 
-**MyGreeterTest 是存在问题的，发现的问题及改进的地方**
+MyGreeterTest 是存在问题的，发现的问题及改进的地方
 
 1. 需要覆盖不同时区的测试 见 初始化和测试用例
   

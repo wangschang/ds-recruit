@@ -10,7 +10,8 @@ class MyGreeterTest extends TestCase
 
     public function setUp(): void
     {
-        $this->greeter = new MyGreeter('Asia/Shanghai');//初始化增加时区
+        $this->greeter = new MyGreeter();//初始化增加时区
+        //$this->greeter = new MyGreeter('America/New_York');//初始化增加时区
     }
 
     public function test_init()
@@ -28,12 +29,22 @@ class MyGreeterTest extends TestCase
         );
     }
     /**
+     * add timezone test default is Asia/Shanghai
+     *
+     * @return void
+     */
+    public function test_timezone(){
+        $this->assertEquals(
+            date_default_timezone_get(),
+            'Asia/Shanghai'
+        );
+    }
+    /**
      * 新增加的测试 morning
      *
      * @return void
      */
     public function test_morning(){
-        date_default_timezone_set('Asia/Shanghai');
         $timstamp = strtotime("2024-09-26 06:00:00");
         $this->greeter->settimestamp($timstamp);
         $this->assertEquals(
@@ -47,7 +58,7 @@ class MyGreeterTest extends TestCase
      * @return void
      */
     public function test_afternoon(){
-        date_default_timezone_set('Asia/Shanghai');
+        
         $timstamp = strtotime("2024-09-26 12:00:00");
         $this->greeter->settimestamp($timstamp);
         $this->assertEquals(
@@ -61,7 +72,6 @@ class MyGreeterTest extends TestCase
      * @return void
      */
     public function test_evening(){
-        date_default_timezone_set('Asia/Shanghai');
         $timstamp = strtotime("2024-09-26 05:59:59");
         $this->greeter->settimestamp($timstamp);
         $this->assertEquals(
@@ -75,7 +85,7 @@ class MyGreeterTest extends TestCase
      * @return void
      */
     public function test_default(){
-        date_default_timezone_set('Asia/Shanghai');
+        
         $hour = date('G'); 
         // 根据时间范围返回相应的问候语
         if ($hour >= 6 && $hour < 12) {
@@ -96,7 +106,7 @@ class MyGreeterTest extends TestCase
      * @return void
      */
     public function test_timestamp(){
-        date_default_timezone_set('Asia/Shanghai');
+        
         $timstamp = strtotime("2024-09-26 19:00:00");
         $this->greeter->settimestamp($timstamp);
         $this->assertEquals(
@@ -110,7 +120,7 @@ class MyGreeterTest extends TestCase
      * @return void
      */
     public function test_random(){
-        date_default_timezone_set('Asia/Shanghai');
+        
         $timstamp_start = strtotime("2024-09-26 00:00:00");
         $timstamp_end = strtotime("2024-09-26 23:59:59");
         $timstamp = rand($timstamp_start,$timstamp_end);

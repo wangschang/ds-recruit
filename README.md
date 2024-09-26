@@ -66,13 +66,14 @@ MyGreeterTest 是存在问题的，发现的问题及改进的地方如下（下
 `Runtime: PHP 8.3.11
 Configuration: /srv/phpunit.xml`
 
-`........ 8 / 8 (100%)`
+`........ 9 / 9 (100%)`
 
 `Time: 00:00.008, Memory: 8.00 MB`
 
 `My Greeter
  ✔ Init
  ✔ Greeting
+ ✔ Timezone
  ✔ Morning
  ✔ Afternoon
  ✔ Evening
@@ -80,4 +81,4 @@ Configuration: /srv/phpunit.xml`
  ✔ Timestamp
  ✔ Random`
 
-`OK (8 tests, 8 assertions)`
+`OK (9 tests, 9 assertions)`

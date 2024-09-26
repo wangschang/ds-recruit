@@ -44,6 +44,8 @@ Hello future teammate!
      所以在dockerfile文件中增加 `RUN apk add --no-cache make` 解决不能正确执行的问题
   - b. Makefile中的 `tests: composer-update` 增加判断防止方法不存在异常
 
+  - c.进一步可以优化的地方，可以把php环境下的 composer安装、make、默认时区等放到 安装放到 Dockerfile中
+
 **思考部分问题及改进**
 
 MyGreeterTest 是存在问题的，发现的问题及改进的地方
